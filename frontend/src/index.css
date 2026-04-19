@@ -1,0 +1,145 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==============================
+   DARK THEME (default)
+   ============================== */
+:root,
+html.dark {
+  --bg-base:       #030712;
+  --bg-surface:    #111827;
+  --bg-elevated:   #1f2937;
+  --bg-card:       rgba(17, 24, 39, 0.7);
+  --text-primary:  #f3f4f6;
+  --text-secondary:#9ca3af;
+  --text-muted:    #4b5563;
+  --border-soft:   rgba(255, 255, 255, 0.05);
+  --border-medium: rgba(255, 255, 255, 0.1);
+  --shadow-color:  rgba(0,0,0,0.5);
+  --scrollbar-track: #111827;
+  --scrollbar-thumb: #374151;
+  background-color: #030712;
+  color: #f3f4f6;
+}
+
+/* ==============================
+   LIGHT THEME
+   ============================== */
+html.light {
+  --bg-base:       #f1f5f9;
+  --bg-surface:    #ffffff;
+  --bg-elevated:   #e2e8f0;
+  --bg-card:       rgba(255, 255, 255, 0.85);
+  --text-primary:  #0f172a;
+  --text-secondary:#475569;
+  --text-muted:    #94a3b8;
+  --border-soft:   rgba(0, 0, 0, 0.06);
+  --border-medium: rgba(0, 0, 0, 0.12);
+  --shadow-color:  rgba(0,0,0,0.1);
+  --scrollbar-track: #e2e8f0;
+  --scrollbar-thumb: #94a3b8;
+  background-color: #f1f5f9;
+  color: #0f172a;
+}
+
+/* ==============================
+   GLOBAL BASE STYLES
+   ============================== */
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ==============================
+   CUSTOM SCROLLBAR
+   ============================== */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--scrollbar-track); }
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover { background: #eab308; }
+
+/* ==============================
+   GLASS MORPHISM - adapts to theme
+   ============================== */
+.glass-morphism {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-medium);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+/* ==============================
+   THEME-AWARE UTILITY CLASSES
+   ============================== */
+.theme-bg-base    { background-color: var(--bg-base); }
+.theme-bg-surface { background-color: var(--bg-surface); }
+.theme-bg-elevated{ background-color: var(--bg-elevated); }
+.theme-text       { color: var(--text-primary); }
+.theme-text-sec   { color: var(--text-secondary); }
+.theme-text-muted { color: var(--text-muted); }
+.theme-border     { border-color: var(--border-soft); }
+
+/* ==============================
+   LIGHT MODE OVERRIDES FOR COMPONENTS
+   ============================== */
+html.light .bg-dark-dark,
+html.light .bg-\[\#030712\] {
+  background-color: var(--bg-base) !important;
+}
+
+html.light .bg-dark-light\/40,
+html.light .bg-white\/5,
+html.light .bg-white\/10 {
+  background-color: var(--bg-elevated) !important;
+}
+
+html.light .text-white {
+  color: var(--text-primary) !important;
+}
+
+html.light .text-gray-400 {
+  color: var(--text-secondary) !important;
+}
+
+html.light .text-gray-500 {
+  color: var(--text-muted) !important;
+}
+
+html.light .border-white\/5,
+html.light .border-white\/10 {
+  border-color: var(--border-soft) !important;
+}
+
+html.light textarea,
+html.light input {
+  background-color: var(--bg-surface) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-medium) !important;
+}
+
+html.light nav.glass-morphism {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(0,0,0,0.08) !important;
+}
+
+/* Light mode nav dropdown */
+html.light .bg-dark-light {
+  background-color: var(--bg-surface) !important;
+}
+
+/* Smooth transitions on all major elements */
+*, *::before, *::after {
+  transition-property: background-color, border-color, color;
+  transition-duration: 0.25s;
+  transition-timing-function: ease;
+}
+

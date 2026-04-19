@@ -1,0 +1,15 @@
+{
+  "name": "online-gym-equipment",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node backend/server.js",
+    "backend": "npm run dev --prefix backend",
+    "frontend": "npm run dev --prefix frontend",
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "data:import": "npm run data:import --prefix backend",
+    "data:destroy": "npm run data:destroy --prefix backend"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  }
+}
